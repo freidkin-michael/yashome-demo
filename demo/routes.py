@@ -352,6 +352,26 @@ REFUSED = frozenset((
     # merging two devices into one: the owner rebuilds the house around a replaced device
     "GET /api/devices/merge-plan",
     "POST /api/devices/merge",
+    # guests at the door: requests to a real house's phones, its guest keys and its settings
+    "DELETE /api/guest/keys/{gid}",
+    "GET /api/guest",
+    "GET /api/guest/request/{rid}",
+    "GET /api/guest/settings",
+    "GET /guest",
+    "POST /api/guest/request",
+    "POST /api/guest/{rid}/allow",
+    "POST /api/guest/{rid}/deny",
+    "PUT /api/guest/settings",
+    # writing a real NFC card through an administrator's phone, and the NFC settings
+    "DELETE /api/nfc/write/{sid}",
+    "GET /api/nfc/write/{sid}",
+    "POST /api/nfc/write/start",
+    "POST /api/nfc/write/{sid}/step",
+    "PUT /api/nfc/settings",
+    # real devices on the LAN: the SwitchBot locks found by radio, a real TV's own apps and inputs
+    "GET /api/switchbot/found",
+    "GET /api/tizen/tvs/{dev_id}/apps",
+    "GET /api/webos/tvs/{dev_id}/lists",
 ))
 
 ALLOW = {**{tuple(k.split(" ", 1)): "view" for k in VIEW}, **{tuple(k.split(" ", 1)): "control" for k in CONTROL}}
