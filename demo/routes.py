@@ -251,6 +251,7 @@ REFUSED = frozenset((
     # the family app: real phones, push messages
     "GET /api/family",
     "GET /api/family/me",
+    "GET /api/family/me/ui",
     "GET /api/family/me/app",
     "GET /api/family/presence/devices",
     "PUT /api/family/{uid}/presence",
