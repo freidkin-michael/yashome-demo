@@ -1,0 +1,360 @@
+{
+ "_version": 1,
+ "names": {
+  "tv_socket": "TV socket"
+ },
+ "channel_names": {
+  "Living room wall switch": {
+   "state_l1": "Floor lamp",
+   "state_l2": "LED strip"
+  }
+ },
+ "channel_dimrange": {},
+ "bindings": {
+  "Hallway motion": {
+   "occupancy": {
+    "true": {
+     "target": "Hallway light",
+     "code": "state",
+     "action": "on",
+     "for": 120,
+     "retrigger": "extend",
+     "conditions": [
+      {
+       "device": "Hallway motion",
+       "code": "illuminance",
+       "op": "<",
+       "value": 80
+      }
+     ]
+    }
+   }
+  },
+  "Kitchen motion": {
+   "occupancy": {
+    "true": {
+     "target": "Under-cabinet lights",
+     "code": "state",
+     "action": "on",
+     "for": 300,
+     "retrigger": "extend",
+     "time_window": {
+      "from": "18:00",
+      "to": "07:00",
+      "days": [
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7
+      ]
+     }
+    }
+   }
+  },
+  "Bathroom climate": {
+   "humidity": {
+    "above": {
+     "target": "bath_fan",
+     "code": "power",
+     "action": "on",
+     "threshold": 70,
+     "hyst": 5
+    },
+    "below": {
+     "target": "bath_fan",
+     "code": "power",
+     "action": "off",
+     "threshold": 58,
+     "hyst": 3
+    }
+   }
+  },
+  "Living room window": {
+   "contact": {
+    "false": {
+     "target": "living_ac",
+     "code": "power",
+     "action": "off"
+    }
+   }
+  },
+  "Bedroom window": {
+   "contact": {
+    "false": {
+     "target": "bedroom_ac",
+     "code": "power",
+     "action": "off"
+    }
+   }
+  },
+  "Sofa button": {
+   "action": {
+    "single": {
+     "target": "Living room ceiling",
+     "code": "state",
+     "action": "toggle"
+    },
+    "double": {
+     "target": "Living room wall switch",
+     "code": "state_l2",
+     "action": "toggle"
+    },
+    "hold": {
+     "target": "Living room wall switch",
+     "code": "state_l1",
+     "action": "toggle"
+    }
+   }
+  },
+  "Bedside button": {
+   "action": {
+    "single": {
+     "target": "Bedside lamp",
+     "code": "state",
+     "action": "toggle"
+    },
+    "double": {
+     "target": "Bedroom ceiling",
+     "code": "state",
+     "action": "off"
+    }
+   }
+  },
+  "Doorbell": {
+   "action": {
+    "single": {
+     "target": "Hallway light",
+     "code": "state",
+     "action": "on",
+     "for": 60,
+     "retrigger": "restart"
+    }
+   }
+  },
+  "Kitchen leak": {
+   "water_leak": {
+    "true": {
+     "target": "water_heater",
+     "code": "power",
+     "action": "off"
+    }
+   }
+  },
+  "Kitchen smoke": {
+   "smoke": {
+    "true": {
+     "target": "Kitchen light",
+     "code": "state",
+     "action": "on"
+    }
+   }
+  },
+  "bathroom_radar": {
+   "presence": {
+    "true": {
+     "target": "Bathroom light",
+     "code": "state",
+     "action": "on"
+    },
+    "false": {
+     "target": "Bathroom light",
+     "code": "state",
+     "action": "off"
+    }
+   }
+  },
+  "presence": {
+   "event": {
+    "arrival": {
+     "target": "Hallway light",
+     "code": "state",
+     "action": "on",
+     "for": 180,
+     "retrigger": "restart"
+    },
+    "departure": {
+     "target": "Living room wall switch",
+     "code": "state_l1",
+     "action": "off"
+    }
+   }
+  }
+ },
+ "favorites": [
+  {
+   "device": "Living room ceiling",
+   "code": "state",
+   "alias": "Living room"
+  },
+  {
+   "device": "living_ac",
+   "code": "power",
+   "alias": "Living room AC"
+  },
+  {
+   "device": "front_lock",
+   "code": "locked",
+   "alias": "Front door"
+  },
+  {
+   "device": "Kettle socket",
+   "code": "state",
+   "alias": "Kettle"
+  }
+ ],
+ "rooms": [
+  {
+   "id": "living",
+   "name": "Living room",
+   "devices": [
+    "Living room ceiling",
+    "Living room wall switch",
+    "tv_socket",
+    "living_tv",
+    "living_ac",
+    "living_radar",
+    "Living room climate",
+    "Living room window",
+    "Sofa button"
+   ]
+  },
+  {
+   "id": "kitchen",
+   "name": "Kitchen",
+   "devices": [
+    "Kitchen light",
+    "Under-cabinet lights",
+    "Kettle socket",
+    "Fridge socket",
+    "Kitchen motion",
+    "Kitchen leak",
+    "Kitchen smoke",
+    "Kitchen climate"
+   ]
+  },
+  {
+   "id": "bedroom",
+   "name": "Bedroom",
+   "devices": [
+    "Bedroom ceiling",
+    "Bedside lamp",
+    "bedroom_ac",
+    "Bedroom climate",
+    "Bedroom window",
+    "Bedside button"
+   ]
+  },
+  {
+   "id": "kids",
+   "name": "Kids room",
+   "devices": [
+    "Kids room ceiling",
+    "Night light",
+    "Kids room climate",
+    "kids_air",
+    "Kids room door"
+   ]
+  },
+  {
+   "id": "hall",
+   "name": "Hallway",
+   "devices": [
+    "Hallway light",
+    "Hallway motion",
+    "Hallway climate",
+    "front_lock",
+    "Front door",
+    "Doorbell",
+    "energy_meter"
+   ]
+  },
+  {
+   "id": "bath",
+   "name": "Bathroom",
+   "devices": [
+    "Bathroom light",
+    "bath_fan",
+    "Bathroom climate",
+    "bathroom_radar",
+    "water_heater"
+   ]
+  }
+ ],
+ "tab_order": {},
+ "tile_sizes": {},
+ "automations": {
+  "Night light/state": {
+   "schedule": [
+    {
+     "time": "20:30",
+     "days": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+     ],
+     "action": "on"
+    },
+    {
+     "time": "07:00",
+     "days": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+     ],
+     "action": "off"
+    }
+   ]
+  },
+  "water_heater/power": {
+   "schedule": [
+    {
+     "time": "05:30",
+     "days": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+     ],
+     "action": "on"
+    },
+    {
+     "time": "23:00",
+     "days": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+     ],
+     "action": "off"
+    }
+   ]
+  },
+  "Kettle socket/state": {
+   "inching_sec": 600
+  },
+  "Bathroom light/state": {
+   "inching_sec": 1800
+  }
+ },
+ "rules_disabled": [],
+ "house": {
+  "lang": "en"
+ }
+}

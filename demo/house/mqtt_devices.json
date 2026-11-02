@@ -1,0 +1,513 @@
+[
+ {
+  "id": "living_tv",
+  "name": "Living room TV",
+  "transport": "mqtt",
+  "model": "ESP32 bridge to the TV's network control (ESPHome)",
+  "availability_topic": "living-tv/status",
+  "payload_online": "online",
+  "payload_offline": "offline",
+  "category": "tv",
+  "controls": [
+   {
+    "kind": "switch",
+    "code": "power",
+    "label": "Power",
+    "state_topic": "living-tv/switch/power/state",
+    "command_topic": "living-tv/switch/power/command",
+    "payload_on": "ON",
+    "payload_off": "OFF"
+   },
+   {
+    "kind": "setting_int",
+    "code": "volume",
+    "label": "Volume",
+    "min": 0,
+    "max": 100,
+    "state_topic": "living-tv/number/volume/state",
+    "command_topic": "living-tv/number/volume/command"
+   },
+   {
+    "kind": "switch",
+    "code": "mute",
+    "label": "Mute",
+    "state_topic": "living-tv/switch/mute/state",
+    "command_topic": "living-tv/switch/mute/command",
+    "payload_on": "ON",
+    "payload_off": "OFF"
+   },
+   {
+    "kind": "setting_enum",
+    "code": "input",
+    "label": "Input",
+    "range": [
+     "HDMI 1",
+     "HDMI 2",
+     "Live TV",
+     "Apps"
+    ],
+    "state_topic": "living-tv/select/input/state",
+    "command_topic": "living-tv/select/input/command"
+   }
+  ]
+ },
+ {
+  "id": "living_ac",
+  "name": "Living room AC",
+  "transport": "mqtt",
+  "model": "ESP32-C3 with an IR LED: drives the AC's own remote codes (ESPHome)",
+  "availability_topic": "living-ac/status",
+  "payload_online": "online",
+  "payload_offline": "offline",
+  "category": "climate",
+  "controls": [
+   {
+    "kind": "switch",
+    "code": "power",
+    "label": "Power",
+    "state_topic": "living-ac/switch/power/state",
+    "command_topic": "living-ac/switch/power/command",
+    "payload_on": "ON",
+    "payload_off": "OFF"
+   },
+   {
+    "kind": "setting_enum",
+    "code": "temp",
+    "label": "Temperature",
+    "range": [
+     "16",
+     "17",
+     "18",
+     "19",
+     "20",
+     "21",
+     "22",
+     "23",
+     "24",
+     "25",
+     "26",
+     "27",
+     "28",
+     "29",
+     "30"
+    ],
+    "state_topic": "living-ac/select/temp/state",
+    "command_topic": "living-ac/select/temp/command"
+   },
+   {
+    "kind": "setting_enum",
+    "code": "fan",
+    "label": "Fan",
+    "range": [
+     "auto",
+     "low",
+     "med",
+     "max"
+    ],
+    "state_topic": "living-ac/select/fan/state",
+    "command_topic": "living-ac/select/fan/command"
+   },
+   {
+    "kind": "setting_enum",
+    "code": "mode",
+    "label": "Mode",
+    "range": [
+     "cool",
+     "heat",
+     "dry",
+     "fan",
+     "auto"
+    ],
+    "state_topic": "living-ac/select/mode/state",
+    "command_topic": "living-ac/select/mode/command"
+   },
+   {
+    "kind": "sensor",
+    "code": "room_temp",
+    "label": "In the room",
+    "unit": "\u00b0C",
+    "ro": true,
+    "state_topic": "living-ac/sensor/room_temp/state"
+   }
+  ]
+ },
+ {
+  "id": "living_radar",
+  "name": "Living room radar",
+  "transport": "mqtt",
+  "model": "ESP32-C3 with an HLK-LD2410C 24 GHz radar (ESPHome)",
+  "availability_topic": "living-radar/status",
+  "payload_online": "online",
+  "payload_offline": "offline",
+  "category": "sensor",
+  "controls": [
+   {
+    "kind": "sensor",
+    "code": "presence",
+    "label": "Presence",
+    "unit": "",
+    "ro": true,
+    "state_topic": "living-radar/binary_sensor/presence/state",
+    "vtype": "bool",
+    "payload_on": "ON"
+   },
+   {
+    "kind": "sensor",
+    "code": "distance",
+    "label": "Distance",
+    "unit": "cm",
+    "ro": true,
+    "state_topic": "living-radar/sensor/distance/state"
+   },
+   {
+    "kind": "sensor",
+    "code": "illuminance",
+    "label": "Illuminance",
+    "unit": "lx",
+    "ro": true,
+    "state_topic": "living-radar/sensor/illuminance/state"
+   }
+  ]
+ },
+ {
+  "id": "balcony_weather",
+  "name": "Balcony weather station",
+  "transport": "mqtt",
+  "model": "ESP32 with BME280 and BH1750 sensors (ESPHome)",
+  "availability_topic": "balcony-weather/status",
+  "payload_online": "online",
+  "payload_offline": "offline",
+  "category": "sensor",
+  "controls": [
+   {
+    "kind": "sensor",
+    "code": "temperature",
+    "label": "Outdoor temperature",
+    "unit": "\u00b0C",
+    "ro": true,
+    "state_topic": "balcony-weather/sensor/temperature/state"
+   },
+   {
+    "kind": "sensor",
+    "code": "humidity",
+    "label": "Outdoor humidity",
+    "unit": "%",
+    "ro": true,
+    "state_topic": "balcony-weather/sensor/humidity/state"
+   },
+   {
+    "kind": "sensor",
+    "code": "illuminance",
+    "label": "Daylight",
+    "unit": "lx",
+    "ro": true,
+    "state_topic": "balcony-weather/sensor/illuminance/state"
+   },
+   {
+    "kind": "sensor",
+    "code": "wind",
+    "label": "Wind",
+    "unit": "m/s",
+    "ro": true,
+    "state_topic": "balcony-weather/sensor/wind/state"
+   },
+   {
+    "kind": "sensor",
+    "code": "rain",
+    "label": "Rain",
+    "unit": "",
+    "ro": true,
+    "state_topic": "balcony-weather/binary_sensor/rain/state",
+    "vtype": "bool",
+    "payload_on": "ON"
+   }
+  ]
+ },
+ {
+  "id": "bedroom_ac",
+  "name": "Bedroom AC",
+  "transport": "mqtt",
+  "model": "ESP32-C3 with an IR LED: drives the AC's own remote codes (ESPHome)",
+  "availability_topic": "bedroom-ac/status",
+  "payload_online": "online",
+  "payload_offline": "offline",
+  "category": "climate",
+  "controls": [
+   {
+    "kind": "switch",
+    "code": "power",
+    "label": "Power",
+    "state_topic": "bedroom-ac/switch/power/state",
+    "command_topic": "bedroom-ac/switch/power/command",
+    "payload_on": "ON",
+    "payload_off": "OFF"
+   },
+   {
+    "kind": "setting_enum",
+    "code": "temp",
+    "label": "Temperature",
+    "range": [
+     "16",
+     "17",
+     "18",
+     "19",
+     "20",
+     "21",
+     "22",
+     "23",
+     "24",
+     "25",
+     "26",
+     "27",
+     "28",
+     "29",
+     "30"
+    ],
+    "state_topic": "bedroom-ac/select/temp/state",
+    "command_topic": "bedroom-ac/select/temp/command"
+   },
+   {
+    "kind": "setting_enum",
+    "code": "fan",
+    "label": "Fan",
+    "range": [
+     "auto",
+     "low",
+     "med",
+     "max"
+    ],
+    "state_topic": "bedroom-ac/select/fan/state",
+    "command_topic": "bedroom-ac/select/fan/command"
+   },
+   {
+    "kind": "setting_enum",
+    "code": "mode",
+    "label": "Mode",
+    "range": [
+     "cool",
+     "heat",
+     "dry",
+     "fan",
+     "auto"
+    ],
+    "state_topic": "bedroom-ac/select/mode/state",
+    "command_topic": "bedroom-ac/select/mode/command"
+   },
+   {
+    "kind": "sensor",
+    "code": "room_temp",
+    "label": "In the room",
+    "unit": "\u00b0C",
+    "ro": true,
+    "state_topic": "bedroom-ac/sensor/room_temp/state"
+   }
+  ]
+ },
+ {
+  "id": "kids_air",
+  "name": "Kids room air quality",
+  "transport": "mqtt",
+  "model": "ESP32-C3 with a Sensirion SCD41 CO2 sensor (ESPHome)",
+  "availability_topic": "kids-air/status",
+  "payload_online": "online",
+  "payload_offline": "offline",
+  "category": "sensor",
+  "controls": [
+   {
+    "kind": "sensor",
+    "code": "co2",
+    "label": "CO2",
+    "unit": "ppm",
+    "ro": true,
+    "state_topic": "kids-air/sensor/co2/state"
+   },
+   {
+    "kind": "sensor",
+    "code": "temperature",
+    "label": "Temperature",
+    "unit": "\u00b0C",
+    "ro": true,
+    "state_topic": "kids-air/sensor/temperature/state"
+   },
+   {
+    "kind": "sensor",
+    "code": "humidity",
+    "label": "Humidity",
+    "unit": "%",
+    "ro": true,
+    "state_topic": "kids-air/sensor/humidity/state"
+   }
+  ]
+ },
+ {
+  "id": "front_lock",
+  "name": "Front door lock",
+  "transport": "mqtt",
+  "model": "ESP32 bridge to a Bluetooth lock (ESPHome)",
+  "availability_topic": "front-lock/status",
+  "payload_online": "online",
+  "payload_offline": "offline",
+  "category": "switch",
+  "controls": [
+   {
+    "kind": "switch",
+    "code": "locked",
+    "label": "Lock",
+    "state_topic": "front-lock/lock/lock/state",
+    "command_topic": "front-lock/lock/lock/command",
+    "payload_on": "LOCKED",
+    "payload_off": "UNLOCKED",
+    "text_on": "Locked",
+    "text_off": "Unlocked",
+    "confirm": true
+   },
+   {
+    "kind": "sensor_text",
+    "code": "door",
+    "label": "Door",
+    "ro": true,
+    "state_topic": "front-lock/text_sensor/door/state"
+   },
+   {
+    "kind": "sensor",
+    "code": "battery",
+    "label": "Battery",
+    "unit": "%",
+    "ro": true,
+    "state_topic": "front-lock/sensor/battery/state"
+   }
+  ]
+ },
+ {
+  "id": "bath_fan",
+  "name": "Bathroom fan",
+  "transport": "mqtt",
+  "model": "Sonoff Basic R4 relay (ESPHome)",
+  "availability_topic": "bath-fan/status",
+  "payload_online": "online",
+  "payload_offline": "offline",
+  "category": "switch",
+  "controls": [
+   {
+    "kind": "switch",
+    "code": "power",
+    "label": "Power",
+    "state_topic": "bath-fan/switch/power/state",
+    "command_topic": "bath-fan/switch/power/command",
+    "payload_on": "ON",
+    "payload_off": "OFF"
+   }
+  ]
+ },
+ {
+  "id": "bathroom_radar",
+  "name": "Bathroom radar",
+  "transport": "mqtt",
+  "model": "ESP32-C3 with an HLK-LD2410C 24 GHz radar (ESPHome)",
+  "availability_topic": "bathroom-radar/status",
+  "payload_online": "online",
+  "payload_offline": "offline",
+  "category": "sensor",
+  "controls": [
+   {
+    "kind": "sensor",
+    "code": "presence",
+    "label": "Presence",
+    "unit": "",
+    "ro": true,
+    "state_topic": "bathroom-radar/binary_sensor/presence/state",
+    "vtype": "bool",
+    "payload_on": "ON"
+   },
+   {
+    "kind": "sensor",
+    "code": "distance",
+    "label": "Distance",
+    "unit": "cm",
+    "ro": true,
+    "state_topic": "bathroom-radar/sensor/distance/state"
+   },
+   {
+    "kind": "sensor",
+    "code": "illuminance",
+    "label": "Illuminance",
+    "unit": "lx",
+    "ro": true,
+    "state_topic": "bathroom-radar/sensor/illuminance/state"
+   }
+  ]
+ },
+ {
+  "id": "water_heater",
+  "name": "Water heater",
+  "transport": "mqtt",
+  "model": "Shelly Plus 1PM relay with power metering (ESPHome)",
+  "availability_topic": "water-heater/status",
+  "payload_online": "online",
+  "payload_offline": "offline",
+  "category": "switch",
+  "controls": [
+   {
+    "kind": "switch",
+    "code": "power",
+    "label": "Power",
+    "state_topic": "water-heater/switch/power/state",
+    "command_topic": "water-heater/switch/power/command",
+    "payload_on": "ON",
+    "payload_off": "OFF"
+   },
+   {
+    "kind": "sensor",
+    "code": "watts",
+    "label": "Power draw",
+    "unit": "W",
+    "ro": true,
+    "state_topic": "water-heater/sensor/watts/state"
+   },
+   {
+    "kind": "sensor",
+    "code": "water_temp",
+    "label": "Water temperature",
+    "unit": "\u00b0C",
+    "ro": true,
+    "state_topic": "water-heater/sensor/water_temp/state"
+   }
+  ]
+ },
+ {
+  "id": "energy_meter",
+  "name": "Energy meter",
+  "transport": "mqtt",
+  "model": "ESP32 with a PZEM-004T energy meter (ESPHome)",
+  "availability_topic": "energy-meter/status",
+  "payload_online": "online",
+  "payload_offline": "offline",
+  "category": "sensor",
+  "controls": [
+   {
+    "kind": "sensor",
+    "code": "power",
+    "label": "Power",
+    "unit": "W",
+    "ro": true,
+    "state_topic": "energy-meter/sensor/power/state"
+   },
+   {
+    "kind": "sensor",
+    "code": "energy",
+    "label": "Energy today",
+    "unit": "kWh",
+    "ro": true,
+    "state_topic": "energy-meter/sensor/energy/state"
+   },
+   {
+    "kind": "sensor",
+    "code": "voltage",
+    "label": "Voltage",
+    "unit": "V",
+    "ro": true,
+    "state_topic": "energy-meter/sensor/voltage/state"
+   }
+  ]
+ }
+]

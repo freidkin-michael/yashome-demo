@@ -1,0 +1,1080 @@
+{
+ "v": 1,
+ "rev": 1,
+ "rooms": [
+  {
+   "id": "living",
+   "name": "Living room",
+   "house_room": "living",
+   "poly": [
+    {
+     "x": 0.0114,
+     "y": 0.0535
+    },
+    {
+     "x": 0.5,
+     "y": 0.0535
+    },
+    {
+     "x": 0.5,
+     "y": 0.5884
+    },
+    {
+     "x": 0.0114,
+     "y": 0.5884
+    }
+   ],
+   "walls": [
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "kitchen",
+   "name": "Kitchen",
+   "house_room": "kitchen",
+   "poly": [
+    {
+     "x": 0.5,
+     "y": 0.0535
+    },
+    {
+     "x": 0.7443,
+     "y": 0.0535
+    },
+    {
+     "x": 0.7443,
+     "y": 0.5884
+    },
+    {
+     "x": 0.5,
+     "y": 0.5884
+    }
+   ],
+   "walls": [
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "bedroom",
+   "name": "Bedroom",
+   "house_room": "bedroom",
+   "poly": [
+    {
+     "x": 0.7443,
+     "y": 0.0535
+    },
+    {
+     "x": 0.9886,
+     "y": 0.0535
+    },
+    {
+     "x": 0.9886,
+     "y": 0.5884
+    },
+    {
+     "x": 0.7443,
+     "y": 0.5884
+    }
+   ],
+   "walls": [
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "kids",
+   "name": "Kids room",
+   "house_room": "kids",
+   "poly": [
+    {
+     "x": 0.0114,
+     "y": 0.5884
+    },
+    {
+     "x": 0.3371,
+     "y": 0.5884
+    },
+    {
+     "x": 0.3371,
+     "y": 0.9837
+    },
+    {
+     "x": 0.0114,
+     "y": 0.9837
+    }
+   ],
+   "walls": [
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "hall",
+   "name": "Hallway",
+   "house_room": "hall",
+   "poly": [
+    {
+     "x": 0.3371,
+     "y": 0.5884
+    },
+    {
+     "x": 0.9886,
+     "y": 0.5884
+    },
+    {
+     "x": 0.9886,
+     "y": 0.7512
+    },
+    {
+     "x": 0.7443,
+     "y": 0.7512
+    },
+    {
+     "x": 0.7443,
+     "y": 0.9837
+    },
+    {
+     "x": 0.3371,
+     "y": 0.9837
+    }
+   ],
+   "walls": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "bath",
+   "name": "Bathroom",
+   "house_room": "bath",
+   "poly": [
+    {
+     "x": 0.7443,
+     "y": 0.7512
+    },
+    {
+     "x": 0.9886,
+     "y": 0.7512
+    },
+    {
+     "x": 0.9886,
+     "y": 0.9837
+    },
+    {
+     "x": 0.7443,
+     "y": 0.9837
+    }
+   ],
+   "walls": [
+    true,
+    true,
+    true,
+    true
+   ]
+  }
+ ],
+ "items": [
+  {
+   "id": "d1",
+   "kind": "device",
+   "dev": "Living room ceiling",
+   "name": "",
+   "type": "",
+   "x": 0.2557,
+   "y": 0.3209,
+   "room": "living",
+   "smooth": false
+  },
+  {
+   "id": "l2",
+   "kind": "load",
+   "dev": "",
+   "name": "Ceiling lamp",
+   "type": "lamp",
+   "x": 0.2557,
+   "y": 0.286,
+   "room": "living",
+   "smooth": false
+  },
+  {
+   "id": "d3",
+   "kind": "device",
+   "dev": "Living room wall switch",
+   "name": "",
+   "type": "",
+   "x": 0.2883,
+   "y": 0.4023,
+   "room": "living",
+   "smooth": false
+  },
+  {
+   "id": "l4",
+   "kind": "load",
+   "dev": "",
+   "name": "Floor lamp",
+   "type": "lamp",
+   "x": 0.0603,
+   "y": 0.4953,
+   "room": "living",
+   "smooth": false
+  },
+  {
+   "id": "l5",
+   "kind": "load",
+   "dev": "",
+   "name": "LED strip",
+   "type": "led",
+   "x": 0.2231,
+   "y": 0.0884,
+   "room": "living",
+   "smooth": false,
+   "path": [
+    {
+     "x": 0.0928,
+     "y": 0.0884
+    },
+    {
+     "x": 0.2231,
+     "y": 0.0884
+    }
+   ]
+  },
+  {
+   "id": "d6",
+   "kind": "device",
+   "dev": "tv_socket",
+   "name": "",
+   "type": "",
+   "x": 0.3453,
+   "y": 0.4953,
+   "room": "living",
+   "smooth": false
+  },
+  {
+   "id": "d7",
+   "kind": "device",
+   "dev": "living_tv",
+   "name": "",
+   "type": "",
+   "x": 0.2313,
+   "y": 0.5419,
+   "room": "living",
+   "smooth": false
+  },
+  {
+   "id": "d8",
+   "kind": "device",
+   "dev": "living_ac",
+   "name": "",
+   "type": "",
+   "x": 0.0358,
+   "y": 0.2279,
+   "room": "living",
+   "smooth": false
+  },
+  {
+   "id": "d9",
+   "kind": "device",
+   "dev": "living_radar",
+   "name": "",
+   "type": "",
+   "x": 0.4756,
+   "y": 0.1,
+   "room": "living",
+   "smooth": false
+  },
+  {
+   "id": "d10",
+   "kind": "device",
+   "dev": "Living room climate",
+   "name": "",
+   "type": "",
+   "x": 0.3779,
+   "y": 0.3442,
+   "room": "living",
+   "smooth": false
+  },
+  {
+   "id": "d11",
+   "kind": "device",
+   "dev": "Living room window",
+   "name": "",
+   "type": "",
+   "x": 0.1743,
+   "y": 0.0709,
+   "room": "living",
+   "smooth": false
+  },
+  {
+   "id": "d12",
+   "kind": "device",
+   "dev": "Sofa button",
+   "name": "",
+   "type": "",
+   "x": 0.1417,
+   "y": 0.4256,
+   "room": "living",
+   "smooth": false
+  },
+  {
+   "id": "d13",
+   "kind": "device",
+   "dev": "blaster:living-ir",
+   "name": "",
+   "type": "",
+   "x": 0.1091,
+   "y": 0.3442,
+   "room": "living",
+   "smooth": false
+  },
+  {
+   "id": "d14",
+   "kind": "device",
+   "dev": "balcony_weather",
+   "name": "",
+   "type": "",
+   "x": 0.386,
+   "y": 0.0186,
+   "room": "",
+   "smooth": false
+  },
+  {
+   "id": "d15",
+   "kind": "device",
+   "dev": "Kitchen light",
+   "name": "",
+   "type": "",
+   "x": 0.5163,
+   "y": 0.5535,
+   "room": "kitchen",
+   "smooth": false
+  },
+  {
+   "id": "l16",
+   "kind": "load",
+   "dev": "",
+   "name": "Kitchen ceiling",
+   "type": "lamp",
+   "x": 0.6221,
+   "y": 0.3209,
+   "room": "kitchen",
+   "smooth": false
+  },
+  {
+   "id": "d17",
+   "kind": "device",
+   "dev": "Under-cabinet lights",
+   "name": "",
+   "type": "",
+   "x": 0.6873,
+   "y": 0.2279,
+   "room": "kitchen",
+   "smooth": false
+  },
+  {
+   "id": "l18",
+   "kind": "load",
+   "dev": "",
+   "name": "Cabinet strip",
+   "type": "led",
+   "x": 0.6629,
+   "y": 0.1,
+   "room": "kitchen",
+   "smooth": false,
+   "path": [
+    {
+     "x": 0.5326,
+     "y": 0.1
+    },
+    {
+     "x": 0.6629,
+     "y": 0.1
+    }
+   ]
+  },
+  {
+   "id": "d19",
+   "kind": "device",
+   "dev": "Kettle socket",
+   "name": "",
+   "type": "",
+   "x": 0.7117,
+   "y": 0.3907,
+   "room": "kitchen",
+   "smooth": false
+  },
+  {
+   "id": "d20",
+   "kind": "device",
+   "dev": "Fridge socket",
+   "name": "",
+   "type": "",
+   "x": 0.5489,
+   "y": 0.1814,
+   "room": "kitchen",
+   "smooth": false
+  },
+  {
+   "id": "d21",
+   "kind": "device",
+   "dev": "Kitchen motion",
+   "name": "",
+   "type": "",
+   "x": 0.7199,
+   "y": 0.5535,
+   "room": "kitchen",
+   "smooth": false
+  },
+  {
+   "id": "d22",
+   "kind": "device",
+   "dev": "Kitchen leak",
+   "name": "",
+   "type": "",
+   "x": 0.614,
+   "y": 0.1581,
+   "room": "kitchen",
+   "smooth": false
+  },
+  {
+   "id": "d23",
+   "kind": "device",
+   "dev": "Kitchen smoke",
+   "name": "",
+   "type": "",
+   "x": 0.6303,
+   "y": 0.2744,
+   "room": "kitchen",
+   "smooth": false
+  },
+  {
+   "id": "d24",
+   "kind": "device",
+   "dev": "Kitchen climate",
+   "name": "",
+   "type": "",
+   "x": 0.5896,
+   "y": 0.4372,
+   "room": "kitchen",
+   "smooth": false
+  },
+  {
+   "id": "d25",
+   "kind": "device",
+   "dev": "Bedroom ceiling",
+   "name": "",
+   "type": "",
+   "x": 0.8664,
+   "y": 0.3209,
+   "room": "bedroom",
+   "smooth": false
+  },
+  {
+   "id": "l26",
+   "kind": "load",
+   "dev": "",
+   "name": "Bedroom lamp",
+   "type": "lamp",
+   "x": 0.8664,
+   "y": 0.286,
+   "room": "bedroom",
+   "smooth": false
+  },
+  {
+   "id": "d27",
+   "kind": "device",
+   "dev": "Bedside lamp",
+   "name": "",
+   "type": "",
+   "x": 0.956,
+   "y": 0.193,
+   "room": "bedroom",
+   "smooth": false
+  },
+  {
+   "id": "l28",
+   "kind": "load",
+   "dev": "",
+   "name": "Reading lamp",
+   "type": "lamp",
+   "x": 0.956,
+   "y": 0.1465,
+   "room": "bedroom",
+   "smooth": false
+  },
+  {
+   "id": "d29",
+   "kind": "device",
+   "dev": "bedroom_ac",
+   "name": "",
+   "type": "",
+   "x": 0.9723,
+   "y": 0.4023,
+   "room": "bedroom",
+   "smooth": false
+  },
+  {
+   "id": "d30",
+   "kind": "device",
+   "dev": "Bedroom climate",
+   "name": "",
+   "type": "",
+   "x": 0.7769,
+   "y": 0.286,
+   "room": "bedroom",
+   "smooth": false
+  },
+  {
+   "id": "d31",
+   "kind": "device",
+   "dev": "Bedroom window",
+   "name": "",
+   "type": "",
+   "x": 0.8909,
+   "y": 0.0709,
+   "room": "bedroom",
+   "smooth": false
+  },
+  {
+   "id": "d32",
+   "kind": "device",
+   "dev": "Bedside button",
+   "name": "",
+   "type": "",
+   "x": 0.9316,
+   "y": 0.2395,
+   "room": "bedroom",
+   "smooth": false
+  },
+  {
+   "id": "d33",
+   "kind": "device",
+   "dev": "Kids room ceiling",
+   "name": "",
+   "type": "",
+   "x": 0.1743,
+   "y": 0.786,
+   "room": "kids",
+   "smooth": false
+  },
+  {
+   "id": "l34",
+   "kind": "load",
+   "dev": "",
+   "name": "Kids ceiling lamp",
+   "type": "lamp",
+   "x": 0.1743,
+   "y": 0.7512,
+   "room": "kids",
+   "smooth": false
+  },
+  {
+   "id": "d35",
+   "kind": "device",
+   "dev": "Night light",
+   "name": "",
+   "type": "",
+   "x": 0.044,
+   "y": 0.9372,
+   "room": "kids",
+   "smooth": false
+  },
+  {
+   "id": "l36",
+   "kind": "load",
+   "dev": "",
+   "name": "Star lamp",
+   "type": "lamp",
+   "x": 0.0765,
+   "y": 0.9256,
+   "room": "kids",
+   "smooth": false
+  },
+  {
+   "id": "d37",
+   "kind": "device",
+   "dev": "Kids room climate",
+   "name": "",
+   "type": "",
+   "x": 0.3046,
+   "y": 0.6581,
+   "room": "kids",
+   "smooth": false
+  },
+  {
+   "id": "d38",
+   "kind": "device",
+   "dev": "kids_air",
+   "name": "",
+   "type": "",
+   "x": 0.3046,
+   "y": 0.9372,
+   "room": "kids",
+   "smooth": false
+  },
+  {
+   "id": "d39",
+   "kind": "device",
+   "dev": "Kids room door",
+   "name": "",
+   "type": "",
+   "x": 0.3249,
+   "y": 0.8209,
+   "room": "kids",
+   "smooth": false
+  },
+  {
+   "id": "d40",
+   "kind": "device",
+   "dev": "Hallway light",
+   "name": "",
+   "type": "",
+   "x": 0.5489,
+   "y": 0.9488,
+   "room": "hall",
+   "smooth": false
+  },
+  {
+   "id": "l41",
+   "kind": "load",
+   "dev": "",
+   "name": "Hallway ceiling",
+   "type": "lamp",
+   "x": 0.5407,
+   "y": 0.7047,
+   "room": "hall",
+   "smooth": false
+  },
+  {
+   "id": "d42",
+   "kind": "device",
+   "dev": "Hallway motion",
+   "name": "",
+   "type": "",
+   "x": 0.3616,
+   "y": 0.6349,
+   "room": "hall",
+   "smooth": false
+  },
+  {
+   "id": "d43",
+   "kind": "device",
+   "dev": "Hallway climate",
+   "name": "",
+   "type": "",
+   "x": 0.956,
+   "y": 0.6291,
+   "room": "hall",
+   "smooth": false
+  },
+  {
+   "id": "d44",
+   "kind": "device",
+   "dev": "front_lock",
+   "name": "",
+   "type": "",
+   "x": 0.5814,
+   "y": 0.9605,
+   "room": "hall",
+   "smooth": false
+  },
+  {
+   "id": "d45",
+   "kind": "device",
+   "dev": "Front door",
+   "name": "",
+   "type": "",
+   "x": 0.6221,
+   "y": 0.9663,
+   "room": "hall",
+   "smooth": false
+  },
+  {
+   "id": "d46",
+   "kind": "device",
+   "dev": "Doorbell",
+   "name": "",
+   "type": "",
+   "x": 0.5,
+   "y": 0.9663,
+   "room": "hall",
+   "smooth": false
+  },
+  {
+   "id": "d47",
+   "kind": "device",
+   "dev": "Bathroom light",
+   "name": "",
+   "type": "",
+   "x": 0.7687,
+   "y": 0.7977,
+   "room": "bath",
+   "smooth": false
+  },
+  {
+   "id": "l48",
+   "kind": "load",
+   "dev": "",
+   "name": "Bathroom ceiling",
+   "type": "lamp",
+   "x": 0.8664,
+   "y": 0.7977,
+   "room": "bath",
+   "smooth": false
+  },
+  {
+   "id": "d49",
+   "kind": "device",
+   "dev": "bath_fan",
+   "name": "",
+   "type": "",
+   "x": 0.9642,
+   "y": 0.7977,
+   "room": "bath",
+   "smooth": false
+  },
+  {
+   "id": "d50",
+   "kind": "device",
+   "dev": "Bathroom climate",
+   "name": "",
+   "type": "",
+   "x": 0.8664,
+   "y": 0.8674,
+   "room": "bath",
+   "smooth": false
+  },
+  {
+   "id": "d51",
+   "kind": "device",
+   "dev": "bathroom_radar",
+   "name": "",
+   "type": "",
+   "x": 0.7687,
+   "y": 0.9372,
+   "room": "bath",
+   "smooth": false
+  },
+  {
+   "id": "d52",
+   "kind": "device",
+   "dev": "water_heater",
+   "name": "",
+   "type": "",
+   "x": 0.9642,
+   "y": 0.9023,
+   "room": "bath",
+   "smooth": false
+  },
+  {
+   "id": "d53",
+   "kind": "device",
+   "dev": "energy_meter",
+   "name": "",
+   "type": "",
+   "x": 0.3616,
+   "y": 0.9488,
+   "room": "hall",
+   "smooth": false
+  },
+  {
+   "id": "l54",
+   "kind": "load",
+   "dev": "ceiling_fan_ir",
+   "name": "Ceiling fan",
+   "type": "fan",
+   "x": 0.3127,
+   "y": 0.2047,
+   "room": "living",
+   "smooth": false
+  },
+  {
+   "id": "l55",
+   "kind": "load",
+   "dev": "living_tv",
+   "name": "Television",
+   "type": "tv",
+   "x": 0.2313,
+   "y": 0.5419,
+   "room": "living",
+   "smooth": false
+  }
+ ],
+ "links": [
+  {
+   "load": "l2",
+   "dev": "Living room ceiling",
+   "code": "state",
+   "note": "",
+   "seg": []
+  },
+  {
+   "load": "l4",
+   "dev": "Living room wall switch",
+   "code": "state_l1",
+   "note": "",
+   "seg": []
+  },
+  {
+   "load": "l5",
+   "dev": "Living room wall switch",
+   "code": "state_l2",
+   "note": "",
+   "seg": []
+  },
+  {
+   "load": "l16",
+   "dev": "Kitchen light",
+   "code": "state",
+   "note": "",
+   "seg": []
+  },
+  {
+   "load": "l18",
+   "dev": "Under-cabinet lights",
+   "code": "state",
+   "note": "",
+   "seg": []
+  },
+  {
+   "load": "l26",
+   "dev": "Bedroom ceiling",
+   "code": "state",
+   "note": "",
+   "seg": []
+  },
+  {
+   "load": "l28",
+   "dev": "Bedside lamp",
+   "code": "state",
+   "note": "",
+   "seg": []
+  },
+  {
+   "load": "l34",
+   "dev": "Kids room ceiling",
+   "code": "state",
+   "note": "",
+   "seg": []
+  },
+  {
+   "load": "l36",
+   "dev": "Night light",
+   "code": "state",
+   "note": "",
+   "seg": []
+  },
+  {
+   "load": "l41",
+   "dev": "Hallway light",
+   "code": "state",
+   "note": "",
+   "seg": []
+  },
+  {
+   "load": "l48",
+   "dev": "Bathroom light",
+   "code": "state",
+   "note": "",
+   "seg": []
+  },
+  {
+   "load": "l55",
+   "dev": "tv_socket",
+   "code": "state",
+   "note": "",
+   "seg": []
+  }
+ ],
+ "walls": [],
+ "openings": [
+  {
+   "id": "o1",
+   "a": [
+    0.4023,
+    0.5884
+   ],
+   "b": [
+    0.4674,
+    0.5884
+   ],
+   "kind": "door",
+   "open": "left",
+   "side": false
+  },
+  {
+   "id": "o2",
+   "a": [
+    0.5814,
+    0.5884
+   ],
+   "b": [
+    0.6466,
+    0.5884
+   ],
+   "kind": "door",
+   "open": "right",
+   "side": false
+  },
+  {
+   "id": "o3",
+   "a": [
+    0.8257,
+    0.5884
+   ],
+   "b": [
+    0.8909,
+    0.5884
+   ],
+   "kind": "door",
+   "open": "left",
+   "side": false
+  },
+  {
+   "id": "o4",
+   "a": [
+    0.842,
+    0.7512
+   ],
+   "b": [
+    0.9072,
+    0.7512
+   ],
+   "kind": "door",
+   "open": "slide",
+   "side": false
+  },
+  {
+   "id": "o5",
+   "a": [
+    0.3371,
+    0.7744
+   ],
+   "b": [
+    0.3371,
+    0.8674
+   ],
+   "kind": "door",
+   "open": "left",
+   "side": false
+  },
+  {
+   "id": "o6",
+   "a": [
+    0.5733,
+    0.9837
+   ],
+   "b": [
+    0.6547,
+    0.9837
+   ],
+   "kind": "door",
+   "open": "right",
+   "side": false
+  },
+  {
+   "id": "o7",
+   "a": [
+    0.0928,
+    0.0535
+   ],
+   "b": [
+    0.2883,
+    0.0535
+   ],
+   "kind": "window",
+   "open": "left",
+   "side": false
+  },
+  {
+   "id": "o8",
+   "a": [
+    0.5814,
+    0.0535
+   ],
+   "b": [
+    0.6954,
+    0.0535
+   ],
+   "kind": "window",
+   "open": "left",
+   "side": false
+  },
+  {
+   "id": "o9",
+   "a": [
+    0.8094,
+    0.0535
+   ],
+   "b": [
+    0.9397,
+    0.0535
+   ],
+   "kind": "window",
+   "open": "left",
+   "side": false
+  },
+  {
+   "id": "o10",
+   "a": [
+    0.0114,
+    0.6814
+   ],
+   "b": [
+    0.0114,
+    0.8907
+   ],
+   "kind": "window",
+   "open": "left",
+   "side": false
+  },
+  {
+   "id": "o11",
+   "a": [
+    0.0114,
+    0.193
+   ],
+   "b": [
+    0.0114,
+    0.4488
+   ],
+   "kind": "window",
+   "open": "left",
+   "side": false
+  }
+ ],
+ "canvas": {
+  "x": 0,
+  "y": 0,
+  "w": 1228.0,
+  "h": 860.0
+ },
+ "geo": 4,
+ "underlay": {
+  "file": "scheme.svg",
+  "kind": "svg",
+  "x": 0,
+  "y": 0,
+  "w": 1228.0,
+  "h": 860.0,
+  "rot": 0,
+  "opacity": 1,
+  "show": true,
+  "vw": 1228.0,
+  "vh": 860.0
+ }
+}

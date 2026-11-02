@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yashome - a smart home that runs at home</title>
+<meta name="description" content="Yashome: a self-hosted smart home dashboard. Zigbee, ESPHome, IR, rules and a live floor plan.">
+<link rel="icon" href="/favicon.ico">
+<style>
+  :root { color-scheme: dark; }
+  body { margin: 0; font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; background: #0b0e13; color: #e6edf5; }
+  main { max-width: 1040px; margin: 0 auto; padding: 32px 20px 56px; }
+  h1 { font-size: clamp(26px, 5vw, 40px); margin: 0 0 8px; }
+  .lead { color: #9fb0c4; font-size: 18px; margin: 0 0 24px; max-width: 760px; }
+  .cta { display: inline-block; background: #3d8bfd; color: #fff; text-decoration: none; padding: 12px 22px; border-radius: 10px; font-weight: 600; }
+  .note { color: #9fb0c4; font-size: 14px; margin: 10px 0 28px; }
+  figure { margin: 0 0 28px; }
+  img, video { width: 100%; border-radius: 12px; border: 1px solid #2a333d; background: #11161d; display: block; }
+  figcaption { color: #9fb0c4; font-size: 14px; margin-top: 8px; }
+  ul { color: #cfd8e3; padding-left: 20px; }
+  .hero { display: grid; grid-template-columns: 1fr; gap: 24px; align-items: center; margin-bottom: 28px; }
+  @media (min-width: 900px) { .hero { grid-template-columns: 5fr 6fr; } }
+  li { margin: 4px 0; }
+</style>
+</head>
+<body>
+<main>
+  <div class="hero">
+    <div>
+      <h1>Yashome</h1>
+      <p class="lead">A smart home that runs in the home: lights, climate, locks and sensors over Zigbee, ESPHome and IR, rules that
+        act by themselves, and a live plan of the flat. No cloud.</p>
+      <a class="cta" href="/try">Try it yourself</a>
+      <p class="note">A demo flat with simulated devices and residents. One guest at a time; the next ones wait in line.
+        You need the demo login, which we share with friends.</p>
+    </div>
+    <figure style="margin:0"><img src="/showcase/map.png" alt="The plan of the demo flat with its devices">
+      <figcaption>A rule fires: the doorbell switches the hallway light on, and both light up on the plan.</figcaption></figure>
+  </div>
+  <figure><video src="/showcase/tour.webm" controls muted playsinline preload="auto"></video>
+    <figcaption>30 seconds in the demo flat: lights, a doorbell, a resident walks in, a window stops the air conditioner.</figcaption></figure>
+  <ul>
+    <li>Rules: motion, buttons, thresholds with hysteresis, schedules and auto-off.</li>
+    <li>A plan of the home with live state, drawn by the owner.</li>
+    <li>Runs on a small computer at home; the phone app and wall panels talk to it.</li>
+  </ul>
+</main>
+</body>
+</html>

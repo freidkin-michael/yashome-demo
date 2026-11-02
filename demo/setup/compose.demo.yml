@@ -1,0 +1,101 @@
+# The public demo: a compose project of its own (../README.md). Run from the run dir that setup/export.sh fills:
+# `docker compose -p yashome-demo --env-file demo.env -f app/plugins-extra/demo/setup/compose.demo.yml up -d`.
+# The backend, the broker and the simulator sit on an internal network (no LAN, no internet, no host port);
+# only the edge proxy has a published port, which the firewall (setup/firewall.sh) opens to the front proxy
+# alone. The edge has a fixed address there (DEMO_EDGE_IP): the backend believes its X-Forwarded-For only.
+# Every container: no capabilities, no new privileges, a read-only root, a process cap, a user of its own.
+name: yashome-demo
+
+x-hard: &hard
+  restart: always
+  read_only: true
+  cap_drop: [ALL]
+  security_opt: ["no-new-privileges:true"]
+  pids_limit: 128
+
+x-code: &code
+  <<: *hard
+  image: yashome-demo-home:local
+  user: "1000:1000"
+  mem_limit: 384m
+  networks: [demo-int]
+  environment: &env
+    TZ: ${TZ:-UTC}
+    MQTT_HOST: mosquitto
+    MQTT_PORT: "1883"
+    MQTT_USER: ${MQTT_USER:-demo}
+    MQTT_PASSWORD: ${MQTT_PASSWORD:?set MQTT_PASSWORD in .env}
+    HOME: /tmp
+
+services:
+  home:
+    <<: *code
+    build: {context: ../../.., dockerfile: Dockerfile}
+    command: ["python", "/app/plugins-extra/demo/entry.py"]
+    environment:
+      <<: *env
+      YASHOME_RESTRICTED: "1"
+      HOUSE_ROOT: /house
+      PLUGINS: zigbee,ir,climate,tv,presence,map,history,watchdog,stats,panels,demo
+      BACKUP_AT: "off"
+      DEMO_PASSWORD: ${DEMO_PASSWORD:?set DEMO_PASSWORD in .env}
+      DEMO_STATE_DIR: /demo-state
+      DEMO_FEEDBACK_URL: ${DEMO_FEEDBACK_URL:-}
+      DEMO_EDGE_IP: ${DEMO_EDGE_IP:?set DEMO_EDGE_IP in .env, an address of DEMO_INT_SUBNET}
+      DASHBOARD_ORIGINS: ${DEMO_HOST:?set DEMO_HOST in .env}
+    volumes:
+      - ../../..:/app:ro
+      - ${DEMO_STATE_HOST:?set DEMO_STATE_HOST in .env, a directory of uid 1000}:/demo-state
+    tmpfs:
+      - /house:uid=1000,gid=1000,mode=0755,size=64m
+      - /tmp:uid=1000,gid=1000,size=32m
+    depends_on: [mosquitto]
+
+  sim:
+    <<: *code
+    working_dir: /app/plugins-extra/demo
+    command: ["python", "-m", "sim"]
+    healthcheck: {disable: true}
+    pids_limit: 32
+    volumes:
+      - ../../..:/app:ro
+    tmpfs: ["/tmp:uid=1000,gid=1000,size=8m"]
+    depends_on: [mosquitto]
+
+  mosquitto:
+    <<: *hard
+    image: eclipse-mosquitto:2.1.2-alpine
+    user: "1000:1000"
+    command: ["mosquitto", "-c", "/mosquitto/config/mosquitto.conf"]
+    mem_limit: 64m
+    pids_limit: 32
+    networks: [demo-int]
+    volumes:
+      - ./mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+      # made from demo.env by setup/mqtt_passwd.py (export.sh does it), mode 600, uid 1000
+      - ../../../../mosquitto.passwd:/mosquitto/config/passwd:ro
+    tmpfs: ["/mosquitto/data:uid=1000,gid=1000", "/mosquitto/log:uid=1000,gid=1000"]
+
+  edge:
+    <<: *hard
+    image: nginxinc/nginx-unprivileged:1.27-alpine
+    mem_limit: 64m
+    pids_limit: 32
+    networks:
+      demo-int: {ipv4_address: "${DEMO_EDGE_IP}"}
+      demo-pub: {}
+    ports:
+      - "${DEMO_BIND:?set DEMO_BIND in .env}:${DEMO_PORT:-8780}:8080"
+    environment:
+      DEMO_PROXY_IP: ${DEMO_PROXY_IP:?set DEMO_PROXY_IP in .env}
+      NGINX_ENVSUBST_OUTPUT_DIR: /etc/nginx/conf.d
+    volumes:
+      - ./edge.conf.template:/etc/nginx/templates/default.conf.template:ro
+    tmpfs: ["/tmp:uid=101,gid=101", "/etc/nginx/conf.d:uid=101,gid=101"]
+    depends_on: [home]
+
+networks:
+  demo-int:
+    internal: true
+    ipam: {config: [{subnet: "${DEMO_INT_SUBNET:?set DEMO_INT_SUBNET in .env}"}]}
+  demo-pub: {}

@@ -1,0 +1,78 @@
+# The demo's edge. The guest's address is the front proxy's X-Real-IP, believed from DEMO_PROXY_IP only (the front
+# proxy overwrites it); the backend gets exactly that address in X-Forwarded-For. Per address: 10 requests a second
+# (burst 30) on the API, sign-in 1 a second, 20 connections; small bodies; WebSocket upgrades only on /ws.
+limit_req_zone $binary_remote_addr zone=demo_api:10m rate=10r/s;
+limit_req_zone $binary_remote_addr zone=demo_login:10m rate=1r/s;
+limit_conn_zone $binary_remote_addr zone=demo_conn:10m;
+# the log keeps no address and no query string ($uri, not $request: /ws?token= carries a session token)
+log_format demo_anon '[$time_local] $request_method $uri $status $body_bytes_sent $request_time';
+
+map $http_upgrade $demo_upgrade {
+    ~*^websocket$ websocket;
+    default       "";
+}
+map $http_upgrade $demo_connection {
+    ~*^websocket$ upgrade;
+    default       close;
+}
+
+server {
+    listen 8080;
+    server_tokens off;
+    set_real_ip_from ${DEMO_PROXY_IP};
+    real_ip_header X-Real-IP;
+    client_max_body_size 64k;
+    access_log /dev/stdout demo_anon;
+    error_log /dev/stderr crit;           # error lines name the client and the request with its query (a token)
+    limit_conn demo_conn 20;
+    limit_req_status 429;
+    limit_conn_status 429;
+    resolver 127.0.0.11 valid=10s ipv6=off;     # the backend's address is looked up again: a recreated one is found
+    set $backend http://home:8765;
+
+    proxy_http_version 1.1;               # every location sets all its headers: nginx does not merge them
+    proxy_connect_timeout 5s;
+    proxy_read_timeout 60s;
+
+    location = /ws {
+        limit_req zone=demo_api burst=30 nodelay;
+        proxy_pass $backend;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Forwarded-Host $http_host;
+        proxy_set_header X-Forwarded-For $remote_addr;
+        proxy_set_header X-Real-IP "";
+        proxy_set_header X-Forwarded-Proto https;
+        proxy_set_header Upgrade $demo_upgrade;
+        proxy_set_header Connection $demo_connection;
+        proxy_read_timeout 3600s;
+    }
+    location = /api/demo/login {
+        limit_req zone=demo_login burst=3 nodelay;
+        proxy_pass $backend;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Forwarded-Host $http_host;
+        proxy_set_header X-Forwarded-For $remote_addr;
+        proxy_set_header X-Real-IP "";
+        proxy_set_header X-Forwarded-Proto https;
+        proxy_set_header Connection "";
+    }
+    location /api/ {
+        limit_req zone=demo_api burst=30 nodelay;
+        proxy_pass $backend;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Forwarded-Host $http_host;
+        proxy_set_header X-Forwarded-For $remote_addr;
+        proxy_set_header X-Real-IP "";
+        proxy_set_header X-Forwarded-Proto https;
+        proxy_set_header Connection "";
+    }
+    location / {                          # the page and its files: the connection limit only
+        proxy_pass $backend;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Forwarded-Host $http_host;
+        proxy_set_header X-Forwarded-For $remote_addr;
+        proxy_set_header X-Real-IP "";
+        proxy_set_header X-Forwarded-Proto https;
+        proxy_set_header Connection "";
+    }
+}

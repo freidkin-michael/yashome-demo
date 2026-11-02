@@ -1,0 +1,20 @@
+{
+ "_": "The page's controls whose route the demo refuses (routes.py REFUSED): greyed with 'Not available in demo' or hidden before any press. tests/plugins/test_demo.py checks every route is refused.",
+ "controls": [
+  {"sel": "#add-device-btn", "do": "grey", "route": "POST /api/esphome/add"},
+  {"sel": "section:has(.zb-renkey)", "do": "hide", "route": "POST /api/zigbee/device/rename"},
+  {"sel": "[data-act=learn]", "do": "hide", "route": "POST /api/ir/remotes/{rid}/learn"},
+  {"sel": "[data-act=rx-blaster]", "do": "hide", "route": "PATCH /api/ir/blasters/{node}"},
+  {"sel": "[data-act=add-blaster]", "do": "hide", "route": "POST /api/ir/blasters"},
+  {"sel": "[data-act=ren-blaster]", "do": "hide", "route": "PATCH /api/ir/blasters/{node}"},
+  {"sel": "[data-act=del-blaster]", "do": "hide", "route": "DELETE /api/ir/blasters/{node}"},
+  {"sel": "#stx .stx-add", "do": "grey", "route": "POST /api/esphome/add"},
+  {"sel": "#stx .stx-tab[data-t=forgotten]", "do": "grey", "route": "GET /api/devices/forgotten"},
+  {"sel": "#stx button.dlg-btn", "text": "Pairing", "do": "grey", "route": "POST /api/zigbee/pair/start"},
+  {"sel": "#pn-pair", "do": "grey", "route": "POST /api/panels/pairing"},
+  {"sel": ".pn-repair", "do": "grey", "route": "POST /api/panels/pairing"},
+  {"sel": "#pn-esp", "do": "grey", "route": "POST /api/panels/starter/{hw}"},
+  {"sel": "#pn-app-build", "do": "grey", "route": "POST /api/panels/launcher"},
+  {"sel": ".pn-del", "do": "grey", "route": "DELETE /api/panels/{name}"}
+ ]
+}

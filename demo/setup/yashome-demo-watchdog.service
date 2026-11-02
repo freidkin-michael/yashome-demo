@@ -1,0 +1,10 @@
+[Unit]
+Description=Yashome demo watchdog: firewall rules, services up, edge answers
+After=docker.service network-online.target
+Wants=docker.service
+
+[Service]
+Type=oneshot
+# the run dir: setup/export.sh's target, holding demo.env and app/
+EnvironmentFile=/etc/yashome-demo.conf
+ExecStart=/bin/sh ${DEMO_RUN}/app/plugins-extra/demo/setup/watchdog.sh ${DEMO_RUN}

@@ -1,0 +1,18 @@
+{
+ "ir_blasters": [
+  {
+   "node": "living-ir",
+   "name": "Living room IR blaster",
+   "rx": false
+  }
+ ],
+ "ir_appliances": [
+  {
+   "id": "ceiling_fan_ir",
+   "name": "Ceiling fan",
+   "remote": "fan_remote",
+   "blaster": "living-ir"
+  }
+ ],
+ "ir_toggles": []
+}

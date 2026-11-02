@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yashome demo - sign in</title>
+<link rel="icon" href="/favicon.ico">
+<style>
+  :root { color-scheme: dark; }
+  body { margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;
+         font: 16px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; background: #0f1419; color: #e6e6e6; }
+  .card { width: min(360px, 92vw); background: #1a2129; border: 1px solid #2a333d; border-radius: 14px; padding: 24px; }
+  h1 { font-size: 20px; margin: 0 0 6px; }
+  p { margin: 0 0 16px; color: #9aa7b3; font-size: 14px; }
+  label { display: block; font-size: 13px; color: #9aa7b3; margin: 10px 0 4px; }
+  input { width: 100%; box-sizing: border-box; padding: 10px 12px; border-radius: 8px; border: 1px solid #2a333d;
+          background: #0f1419; color: inherit; font-size: 16px; }
+  button { width: 100%; margin-top: 18px; padding: 11px; border: 0; border-radius: 8px; background: #3d8bfd;
+           color: #fff; font-size: 16px; cursor: pointer; }
+  button:disabled { opacity: .6; cursor: default; }
+  .err { color: #ff7b72; font-size: 14px; min-height: 20px; margin-top: 10px; }
+</style>
+</head>
+<body>
+<form class="card" id="f" autocomplete="on">
+  <h1>Try Yashome</h1>
+  <p>A demo flat with simulated devices. One guest at a time, up to 15 min. When the flat is taken, you wait in line and enter by yourself.</p>
+  <label for="password">Password</label>
+  <input id="password" name="password" type="password" autocomplete="current-password" required autofocus>
+  <button id="go" type="submit">Enter the demo</button>
+  <div class="err" id="err" role="alert"></div>
+</form>
+<script>
+document.getElementById('f').onsubmit = async ev => {
+  ev.preventDefault();
+  const go = document.getElementById('go'), err = document.getElementById('err');
+  go.disabled = true; err.textContent = '';
+  try {
+    const r = await fetch('/api/demo/login', {method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({password: document.getElementById('password').value})});
+    const d = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error(d.detail || ('error ' + r.status));
+    localStorage.setItem('hs_token', d.token);
+    localStorage.removeItem('lang');
+    location.replace('/');
+  } catch (e) {
+    err.textContent = e.message;
+    go.disabled = false;
+  }
+};
+</script>
+</body>
+</html>

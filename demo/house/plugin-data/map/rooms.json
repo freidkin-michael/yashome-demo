@@ -1,0 +1,78 @@
+[
+ {
+  "id": "living",
+  "name": "Living room",
+  "devices": [
+   "Living room ceiling",
+   "Living room wall switch",
+   "tv_socket",
+   "living_tv",
+   "living_ac",
+   "living_radar",
+   "Living room climate",
+   "Living room window",
+   "Sofa button"
+  ]
+ },
+ {
+  "id": "kitchen",
+  "name": "Kitchen",
+  "devices": [
+   "Kitchen light",
+   "Under-cabinet lights",
+   "Kettle socket",
+   "Fridge socket",
+   "Kitchen motion",
+   "Kitchen leak",
+   "Kitchen smoke",
+   "Kitchen climate"
+  ]
+ },
+ {
+  "id": "bedroom",
+  "name": "Bedroom",
+  "devices": [
+   "Bedroom ceiling",
+   "Bedside lamp",
+   "bedroom_ac",
+   "Bedroom climate",
+   "Bedroom window",
+   "Bedside button"
+  ]
+ },
+ {
+  "id": "kids",
+  "name": "Kids room",
+  "devices": [
+   "Kids room ceiling",
+   "Night light",
+   "Kids room climate",
+   "kids_air",
+   "Kids room door"
+  ]
+ },
+ {
+  "id": "hall",
+  "name": "Hallway",
+  "devices": [
+   "Hallway light",
+   "Hallway motion",
+   "Hallway climate",
+   "front_lock",
+   "Front door",
+   "Doorbell",
+   "energy_meter"
+  ]
+ },
+ {
+  "id": "bath",
+  "name": "Bathroom",
+  "devices": [
+   "Bathroom light",
+   "bath_fan",
+   "Bathroom climate",
+   "bathroom_radar",
+   "water_heater"
+  ]
+ }
+]
