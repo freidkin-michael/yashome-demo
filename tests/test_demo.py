@@ -708,10 +708,11 @@ def test_the_simulator_takes_only_known_values(signin):
 
 def test_the_showcase_is_open_without_sign_in(demo_on):
     page = demo_on.get("/showcase")
-    assert page.status_code == 200 and '<base href="/showcase/">' in page.text and page.text.count('href="/try?seen"') == 2
+    assert page.status_code == 200 and page.text.count('href="/try?seen"') == 2
+    assert "<base" not in page.text and not re.search(r"""["']img/""", page.text)    # the CSP forbids <base>: links are absolute
     try_page = demo_on.get("/try").text                              # a first visit goes to the slides, ?seen comes back
     assert "location.replace('/showcase')" in try_page and "demo_intro_seen" in try_page
-    for name in re.findall(r'(?:src|href)="img/([^"]+)"', page.text) + ["en/map.png", "ru/mobile.png"]:
+    for name in re.findall(r'(?:src|href)="/showcase/img/([^"]+)"', page.text) + ["en/map.png", "ru/mobile.png"]:
         r = demo_on.get("/showcase/img/" + name)
         assert r.status_code == 200 and r.headers["content-type"].startswith("image/"), name
     for bad in ("../__init__.py", "..%2F__init__.py", "en/../../index.html", "nope.png"):

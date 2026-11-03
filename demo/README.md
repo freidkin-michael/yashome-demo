@@ -94,7 +94,7 @@ Paths below are inside `demo/` unless they start with `tests/` (the repository's
   step (plan, devices, map, remotes, panels, rules, family, guests), with "Skip to the demo" (and Esc) to `/try`. A browser's first visit to `/try` goes to the slides first; Skip and "Try
   the demo" come back with `?seen`, which the browser keeps, so later visits sign in at once. It is
   `static/showcase/index.html` with its pictures in `static/showcase/img/`, served as `/showcase/img/<file>` from that
-  list only; the page also opens straight from the folder.
+  list only (the served page links them absolutely: the CSP forbids `<base>`); the page also opens straight from the folder.
 
 ## The flat
 

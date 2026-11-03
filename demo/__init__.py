@@ -7,6 +7,7 @@ import asyncio
 import hashlib
 import hmac
 import os
+import re
 import secrets
 import sys
 import threading
@@ -449,8 +450,9 @@ core.OPEN_PATHS.update("/showcase/img/" + n for n in SHOW_FILES)
 
 @core.app.get("/showcase")
 def demo_showcase():
-    """The slides use relative img/ links (they also open from a folder): the base makes them /showcase/img/."""
-    html = (SHOW_DIR / "index.html").read_text(encoding="utf-8").replace("<head>", '<head>\n<base href="/showcase/">', 1)
+    """The slides use relative img/ links (they also open from a folder); here they become /showcase/img/.
+    Not a <base> tag: the page's CSP has base-uri 'none'."""
+    html = re.sub(r"""(["'])img/""", r"\1/showcase/img/", (SHOW_DIR / "index.html").read_text(encoding="utf-8"))
     return HTMLResponse(html, headers={"Cache-Control": "public, max-age=300"})
 
 
