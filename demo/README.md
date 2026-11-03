@@ -91,7 +91,8 @@ Paths below are inside `demo/` unless they start with `tests/` (the repository's
   turn and go back at the reset.
 - **Ask**: example questions, answered from the flat as it is now; the language model is not connected.
 - **The showcase** (`/showcase`, no sign-in): an animated slide show, English and Russian, of setting up a home step by
-  step (plan, devices, map, remotes, panels, rules, family, guests), with "Skip to the demo" (and Esc) to `/try`. It is
+  step (plan, devices, map, remotes, panels, rules, family, guests), with "Skip to the demo" (and Esc) to `/try`. A browser's first visit to `/try` goes to the slides first; Skip and "Try
+  the demo" come back with `?seen`, which the browser keeps, so later visits sign in at once. It is
   `static/showcase/index.html` with its pictures in `static/showcase/img/`, served as `/showcase/img/<file>` from that
   list only; the page also opens straight from the folder.
 

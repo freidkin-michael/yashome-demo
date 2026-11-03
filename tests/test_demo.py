@@ -708,7 +708,9 @@ def test_the_simulator_takes_only_known_values(signin):
 
 def test_the_showcase_is_open_without_sign_in(demo_on):
     page = demo_on.get("/showcase")
-    assert page.status_code == 200 and '<base href="/showcase/">' in page.text and 'href="/try"' in page.text
+    assert page.status_code == 200 and '<base href="/showcase/">' in page.text and page.text.count('href="/try?seen"') == 2
+    try_page = demo_on.get("/try").text                              # a first visit goes to the slides, ?seen comes back
+    assert "location.replace('/showcase')" in try_page and "demo_intro_seen" in try_page
     for name in re.findall(r'(?:src|href)="img/([^"]+)"', page.text) + ["en/map.png", "ru/mobile.png"]:
         r = demo_on.get("/showcase/img/" + name)
         assert r.status_code == 200 and r.headers["content-type"].startswith("image/"), name

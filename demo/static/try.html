@@ -4,6 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Yashome demo - sign in</title>
+<script>  /* a first visit sees the slide show first; its Skip and Try the demo come back here with ?seen */
+  try { if (/[?&]seen\b/.test(location.search)) localStorage.setItem('demo_intro_seen', '1');
+        else if (!localStorage.getItem('demo_intro_seen')) location.replace('/showcase'); } catch (e) {}
+</script>
 <link rel="icon" href="/favicon.ico">
 <style>
   :root { color-scheme: dark; }
