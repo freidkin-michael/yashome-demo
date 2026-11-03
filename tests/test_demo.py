@@ -707,9 +707,13 @@ def test_the_simulator_takes_only_known_values(signin):
 
 
 def test_the_showcase_is_open_without_sign_in(demo_on):
-    for p in ("/showcase", "/showcase/map.png", "/showcase/tour.webm"):
-        assert demo_on.get(p).status_code in (200, 404), p           # 404: the picture or the film is not made yet
-    assert "Try it yourself" in demo_on.get("/showcase").text
+    page = demo_on.get("/showcase")
+    assert page.status_code == 200 and '<base href="/showcase/">' in page.text and 'href="/try"' in page.text
+    for name in re.findall(r'(?:src|href)="img/([^"]+)"', page.text) + ["en/map.png", "ru/mobile.png"]:
+        r = demo_on.get("/showcase/img/" + name)
+        assert r.status_code == 200 and r.headers["content-type"].startswith("image/"), name
+    for bad in ("../__init__.py", "..%2F__init__.py", "en/../../index.html", "nope.png"):
+        assert demo_on.get("/showcase/img/" + bad).status_code in (401, 403, 404), bad
 
 
 def test_the_simulation_panel_presses_only_what_the_demo_allows():

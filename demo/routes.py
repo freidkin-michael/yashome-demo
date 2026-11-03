@@ -57,8 +57,7 @@ VIEW = (
     "GET /api/demo/feed",
     "GET /api/demo/sim",
     "GET /showcase",
-    "GET /showcase/map.png",
-    "GET /showcase/tour.webm",
+    "GET /showcase/img/{name:path}",
     # the panel builder's playground: the builder, the tablet view, the sim's weather and balcony camera
     "GET /api/weather",
     "GET /api/camera/{cid}/snapshot",

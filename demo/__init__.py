@@ -439,33 +439,27 @@ def demo_sim_move(body: MoveBody):
     return _sim("move", f"{body.who}={body.room or ''}")
 
 
-# ---- the public showcase: a picture of the map and a short film, no sign-in ----
-SHOWCASE = {"/showcase": ("showcase.html", "text/html"), "/showcase/map.png": ("map.png", "image/png"),
-            "/showcase/tour.webm": ("tour.webm", "video/webm")}
-core.OPEN_PATHS.update(SHOWCASE)
-
-
-def _showcase(path: str):
-    name, mime = SHOWCASE[path]
-    f = (HERE / "static" / name) if name.endswith(".html") else (_state_dir / "showcase" / name)
-    if not f.is_file():
-        raise HTTPException(404, "not made yet")
-    return FileResponse(f, media_type=mime, headers={"Cache-Control": "public, max-age=300"})
+# ---- the public showcase: an animated slide show of setting up a home, no sign-in ----
+SHOW_DIR = HERE / "static" / "showcase"
+SHOW_FILES = {f.relative_to(SHOW_DIR / "img").as_posix(): f for f in (SHOW_DIR / "img").rglob("*") if f.is_file()}
+SHOW_MIME = {".png": "image/png", ".svg": "image/svg+xml"}
+core.OPEN_PATHS.add("/showcase")
+core.OPEN_PATHS.update("/showcase/img/" + n for n in SHOW_FILES)
 
 
 @core.app.get("/showcase")
 def demo_showcase():
-    return _showcase("/showcase")
+    """The slides use relative img/ links (they also open from a folder): the base makes them /showcase/img/."""
+    html = (SHOW_DIR / "index.html").read_text(encoding="utf-8").replace("<head>", '<head>\n<base href="/showcase/">', 1)
+    return HTMLResponse(html, headers={"Cache-Control": "public, max-age=300"})
 
 
-@core.app.get("/showcase/map.png")
-def demo_showcase_map():
-    return _showcase("/showcase/map.png")
-
-
-@core.app.get("/showcase/tour.webm")
-def demo_showcase_film():
-    return _showcase("/showcase/tour.webm")
+@core.app.get("/showcase/img/{name:path}")
+def demo_showcase_img(name: str):
+    f = SHOW_FILES.get(name)                  # only the files shipped with the slides, never a path built from the request
+    if f is None:
+        raise HTTPException(404, "no such file")
+    return FileResponse(f, media_type=SHOW_MIME[f.suffix], headers={"Cache-Control": "public, max-age=300"})
 
 
 @core.app.post("/api/demo/reset")

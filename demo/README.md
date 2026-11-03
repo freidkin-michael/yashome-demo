@@ -90,9 +90,10 @@ Paths below are inside `demo/` unless they start with `tests/` (the repository's
   the engine ("Not available here"), its box still explains it; changes that the routes allow are real for the
   turn and go back at the reset.
 - **Ask**: example questions, answered from the flat as it is now; the language model is not connected.
-- **The showcase** (`/showcase`, no sign-in): the map picture and a short film with "Try it yourself". The page
-  serves `DEMO_STATE_DIR/showcase/map.png` and `tour.webm` when they are there (404 until then); nothing in this
-  repository makes them.
+- **The showcase** (`/showcase`, no sign-in): an animated slide show, English and Russian, of setting up a home step by
+  step (plan, devices, map, remotes, panels, rules, family, guests), with "Skip to the demo" (and Esc) to `/try`. It is
+  `static/showcase/index.html` with its pictures in `static/showcase/img/`, served as `/showcase/img/<file>` from that
+  list only; the page also opens straight from the folder.
 
 ## The flat
 
@@ -155,7 +156,7 @@ checks that the edge answers. It skips a run while an export holds the run dir's
 | `house/` | the demo house, written by `sim/seedgen.py` |
 | `sim/` | the catalog, the wire formats, the model, the weather day and the simulator |
 | `ui.js` | the guest's page: the waiting page and the summary out of turn; in control the pill, bottom tabs, Simulate, Ask, toasts, map highlights, the intro |
-| `static/` | the sign-in page, the showcase page, `greyed.json` |
+| `static/` | the sign-in page, the showcase slides (`showcase/`), `greyed.json` |
 | `setup/` | compose, the edge and broker configuration, export, firewall, watchdog and its systemd units, live check, UI check, leak scan |
 
 ## Keys
@@ -164,7 +165,7 @@ checks that the edge answers. It skips a run while an export holds the run dir's
 |---|---|
 | `YASHOME_RESTRICTED` | `1` turns the engine's restricted mode on (`YASHOME_DEMO=1` too) |
 | `DEMO_PASSWORD` | the shared password (there is no name); none = nobody signs in |
-| `DEMO_STATE_DIR` | where the backend keeps the lease and the showcase files across resets (`DEMO_STATE_HOST` on the host, a directory of uid 1000) |
+| `DEMO_STATE_DIR` | where the backend keeps the lease across resets (`DEMO_STATE_HOST` on the host, a directory of uid 1000) |
 | `DEMO_EDGE_IP`, `DEMO_INT_SUBNET` | the edge proxy's fixed address on the internal network, and that network |
 | `DEMO_FEEDBACK_URL` | the link of the end-of-session summary (none: no link) |
 | `DEMO_HOST` | the public name of the demo (the backend accepts browser requests from it) |
