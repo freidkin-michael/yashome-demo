@@ -261,7 +261,7 @@
     .kinds{grid-template-columns:repeat(2,1fr)}
     .pair,.guest{grid-template-columns:1fr} .gphone{grid-row:auto;grid-column:auto}
     .nav{gap:8px;flex-wrap:wrap;bottom:0;padding:10px 8px 14px;background:linear-gradient(to top,var(--bg) 80%,rgba(14,17,22,0))} .skip{top:1.5vh}
-    .slide{padding-bottom:24vh}
+    .slide{padding-bottom:24vh} .slide.wide{grid-template-columns:1fr}  /* .wide outranks .slide: one column too */
   }
 </style>
 </head>
@@ -556,6 +556,8 @@
         <li style="--at:8.4s"><i>2</i><span data-en="Link: the switch -> its lamp" data-ru="Связать: выключатель -> лампа"></span></li>
         <li style="--at:12.1s"><i>3</i><span data-en="Switch on - the lamp lights up" data-ru="Включили - лампа горит"></span></li>
       </ul>
+      <p class="lead" style="margin-top:14px;font-size:.92em" data-en="Not only sensors and lamps: computers, TVs, players, wall panels, speakers, locks - everything the house controls gets its place on the map." data-ru="Не только датчики и лампы: компьютеры, телевизоры, плееры, настенные панели, колонки, замки - всё, чем управляет дом, получает своё место на карте."></p>
+      <div class="badges"><span class="badge" style="--at:2s" data-en="Computers" data-ru="Компьютеры"></span><span class="badge" style="--at:2.3s" data-en="TVs and players" data-ru="Телевизоры и плееры"></span><span class="badge" style="--at:2.6s" data-en="Panels and speakers" data-ru="Панели и колонки"></span><span class="badge" style="--at:2.9s" data-en="Locks" data-ru="Замки"></span></div>
     </div>
     <svg class="sc" viewBox="0 0 1300 700">
       <rect class="win" x="0" y="0" width="1300" height="700" rx="14"/>
